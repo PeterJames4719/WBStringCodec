@@ -1,0 +1,16 @@
+PODS:
+  - WBStringCodec (1.0.0)
+
+DEPENDENCIES:
+  - WBStringCodec (from `../`)
+
+EXTERNAL SOURCES:
+  WBStringCodec:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  WBStringCodec: 98106068bf9f419f031e6ec24dc2dbe0ad1ab244
+
+PODFILE CHECKSUM: e772207d1d35de6d19fd0ec87a480de8b7c0c355
+
+COCOAPODS: 1.5.0
