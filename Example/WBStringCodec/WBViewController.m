@@ -29,6 +29,21 @@
     [self testaes128];
     [self testaes256];
     [self testhmacSHA1];
+    
+    [self testSafe];
+}
+
+- (void)testSafe {
+    NSString *aeskey = @"N76$Yyl5AwP8yaWb";
+    NSString *deskey = @"ighadKSG";
+    
+    [NSString aes128_encryptedDataWithData:nil key:aeskey];
+    [NSString aes128_decryptedDataWithData:nil key:aeskey];
+    [NSString des_encryptedDataWithData:nil key:deskey];
+    [NSString des_decryptedDataWithData:nil key:deskey];
+    [NSString base64_encryptedStringWith:nil];
+    [NSString base64_decryptedDataWith:nil];
+    [NSString hmacSHA1_dataWithString:nil key:@"12345678"];
 }
 
 - (void)testdes {
