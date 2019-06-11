@@ -19,6 +19,9 @@
     } else if ([dataOrString isKindOfClass:[NSData class]]) {
         data = (NSData *)dataOrString;
     }
+    if (!data) {
+        return nil;
+    }
     NSString *encryptedString = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
     return encryptedString;
 }
@@ -29,6 +32,9 @@
         data = [(NSString *)dataOrString dataUsingEncoding:NSUTF8StringEncoding];
     } else if ([dataOrString isKindOfClass:[NSData class]]) {
         data = (NSData *)dataOrString;
+    }
+    if (!data) {
+        return nil;
     }
     NSData *encryptedData = [data base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
     return encryptedData;
@@ -48,6 +54,9 @@
         data = [(NSString *)dataOrString dataUsingEncoding:NSUTF8StringEncoding];
     } else if ([dataOrString isKindOfClass:[NSData class]]) {
         data = (NSData *)dataOrString;
+    }
+    if (!data) {
+        return nil;
     }
     NSData *decryptedData = [[NSData alloc] initWithBase64EncodedData:data options:NSDataBase64DecodingIgnoreUnknownCharacters];
     return decryptedData;

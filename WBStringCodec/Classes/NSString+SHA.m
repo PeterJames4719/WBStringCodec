@@ -23,7 +23,9 @@
     if (!key) {
         return [origin dataUsingEncoding:NSUTF8StringEncoding];
     }
-    
+    if (!origin) {
+        return nil;
+    }
     const char *cKey  = [key cStringUsingEncoding:NSUTF8StringEncoding];
     const char *cData = [origin cStringUsingEncoding:NSUTF8StringEncoding];
     uint8_t cHMAC[CC_SHA1_DIGEST_LENGTH];

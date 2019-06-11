@@ -85,8 +85,11 @@
 #pragma mark - AES Codec
 
 + (NSData *)aes_codecedDataWithData:(NSData *)data key:(NSString *)key keySize:(NSInteger)keySize isEncrypt:(BOOL)encrypt {
+    if (!data) {
+        return data;
+    }
     if (!key || key.length !=16) {
-        NSLog(@"key length must be 16");
+        NSLog(@"aes key length must be 16");
         return nil;
     }
     char keyPtr[keySize + 1];
