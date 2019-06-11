@@ -44,6 +44,9 @@
 
 + (NSString *)base64_decryptedStringWith:(id)dataOrString {
     NSData *decryptedData = [self base64_decryptedDataWith:dataOrString];
+    if (!decryptedData) {
+        return nil;
+    }
     NSString *decrytedString = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
     return decrytedString;
 }

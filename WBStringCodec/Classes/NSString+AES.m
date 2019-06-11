@@ -32,6 +32,9 @@
 
 + (NSString *)aes128_base64_decryptedStringWithData:(NSData *)data key:(NSString *)key {
     NSData *originData = [self aes128_base64_decryptedDataWithData:data key:key];
+    if (!originData) {
+        return nil;
+    }
     return [[NSString alloc] initWithData:originData encoding:NSUTF8StringEncoding];
 }
 
@@ -86,10 +89,10 @@
 
 + (NSData *)aes_codecedDataWithData:(NSData *)data key:(NSString *)key keySize:(NSInteger)keySize isEncrypt:(BOOL)encrypt {
     if (!data) {
-        return data;
+        return nil;
     }
-    if (!key || key.length !=16) {
-        NSLog(@"aes key length must be 16");
+    if (![key isKindOfClass:[NSString class]] || key.length != 16) {
+        NSLog(@"WBStringCodec:AES key nil or length not be 16");
         return nil;
     }
     char keyPtr[keySize + 1];

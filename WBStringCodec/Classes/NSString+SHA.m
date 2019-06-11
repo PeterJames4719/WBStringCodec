@@ -20,12 +20,16 @@
 }
 
 + (NSData *)hmacSHA1_dataWithString:(NSString *)origin key:(NSString *)key {
-    if (!key) {
-        return [origin dataUsingEncoding:NSUTF8StringEncoding];
-    }
+    
     if (!origin) {
         return nil;
     }
+    
+    if (![key isKindOfClass:[NSString class]]) {
+        NSLog(@"WBStringCodec:hmacSHA1 key nil");
+        return nil;
+    }
+    
     const char *cKey  = [key cStringUsingEncoding:NSUTF8StringEncoding];
     const char *cData = [origin cStringUsingEncoding:NSUTF8StringEncoding];
     uint8_t cHMAC[CC_SHA1_DIGEST_LENGTH];

@@ -36,14 +36,22 @@
 - (void)testSafe {
     NSString *aeskey = @"N76$Yyl5AwP8yaWb";
     NSString *deskey = @"ighadKSG";
+
+    NSLog(@"%@", [NSString aes128_encryptedDataWithData:nil key:aeskey]);
+    NSLog(@"%@", [NSString aes128_decryptedDataWithData:nil key:aeskey]);
+    NSLog(@"%@", [NSString aes128_base64_encryptedStringWithData:nil key:aeskey]);
+    NSLog(@"%@", [NSString aes128_base64_decryptedDataWithData:nil key:aeskey]);
     
-    [NSString aes128_encryptedDataWithData:nil key:aeskey];
-    [NSString aes128_decryptedDataWithData:nil key:aeskey];
-    [NSString des_encryptedDataWithData:nil key:deskey];
-    [NSString des_decryptedDataWithData:nil key:deskey];
-    [NSString base64_encryptedStringWith:nil];
-    [NSString base64_decryptedDataWith:nil];
-    [NSString hmacSHA1_dataWithString:nil key:@"12345678"];
+    NSLog(@"%@", [NSString des_encryptedDataWithData:nil key:deskey]);
+    NSLog(@"%@", [NSString des_decryptedDataWithData:nil key:deskey]);
+    NSLog(@"%@", [NSString des_base64_encryptedStringWithData:nil key:deskey]);
+    NSLog(@"%@", [NSString des_base64_decryptedStringWithData:nil key:deskey]);
+    
+    NSLog(@"%@", [NSString base64_encryptedStringWith:nil]);
+    NSLog(@"%@", [NSString base64_decryptedDataWith:nil]);
+    NSLog(@"%@", [NSString hmacSHA1_dataWithString:nil key:@"12345678"]);
+    NSLog(@"%@", [NSString hmacSHA1_base64_stringWithString:nil key:@"12345678"]);
+ 
 }
 
 - (void)testdes {

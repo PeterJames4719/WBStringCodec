@@ -31,6 +31,9 @@
 
 + (NSString *)des_base64_decryptedStringWithData:(NSData *)data key:(NSString *)key {
     NSData *originData = [self des_base64_decryptedDataWithData:data key:key];
+    if (!originData) {
+        return nil;
+    }
     return [[NSString alloc] initWithData:originData encoding:NSUTF8StringEncoding];
 }
 
@@ -49,6 +52,15 @@
 
 + (NSData *)des_codecedDataWithData:(NSData *)data key:(NSString *)key isEncrypt:(BOOL)encrypt
 {
+    if (!data) {
+        return nil;
+    }
+    
+    if (![key isKindOfClass:[NSString class]]) {
+        NSLog(@"WBStringCodec:DES key nil");
+        return nil;
+    }
+    
     NSUInteger dataLength = [data length];
     size_t bufferSize = dataLength + kCCBlockSizeDES;
     unsigned char buffer[bufferSize];
